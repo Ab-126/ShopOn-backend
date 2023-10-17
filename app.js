@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 // Config
 dotenv.config({ path: "config/config.env" });
@@ -13,6 +14,7 @@ app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
+app.use(cors())
 
 // Routes imports
 const product = require("./routes/productRoute");
