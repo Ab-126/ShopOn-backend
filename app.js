@@ -14,7 +14,10 @@ app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
-app.use(cors())
+app.use(cors({
+    origin: ["http://localhost:3000", process.env.FRONTEND_URL],
+    credentials: true,
+}))
 
 // Routes imports
 const product = require("./routes/productRoute");
